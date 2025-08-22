@@ -1,0 +1,80 @@
+.modal-form-account {
+    position: absolute;
+    height: auto;
+    z-index: 1000;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+
+    &-content {
+        position: relative;
+        background-color: #f2f2f2;
+        z-index: 1001;
+        box-shadow: 0 0 5px rgb(190, 188, 188);
+        border-radius: 0.5rem;
+
+        .field-info,
+        .field-address {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 80%;
+
+            .label {
+                margin-bottom: 0.5rem;
+                text-decoration: none;
+                font-weight: 100;
+                font-size: 0.875rem;
+            }
+
+            .input{
+                width: 70%;
+                border: 1px solid #B0BF3F;
+                background-color: #8c471f00;
+                border-radius: 0.5rem;
+                color: #42591E;
+                font-family: "Tienne", sans-serif;
+            }
+
+            .input:focus {
+                outline: none;
+                border: 2px solid #8C471F; 
+              }
+
+            .input::placeholder {
+                color: #B0BF3F; /* Remplace "gray" par la couleur que tu veux */
+              }
+        }
+
+        .h1-form {
+            color: #8C471F;
+            font-weight: bold;
+            font-size: 0.875rem;
+            padding-top: 1rem;
+        }
+
+        .border-top{
+            border-top: 1px solid #8C471F;
+            width: 100%;
+            text-align: center;
+        }
+
+        .button-validate{
+            font-family: 'Tienne', sans-serif;
+            color: #D9D59A;
+        }
+
+        .button-cancel-form{
+            border: none;
+            background-color: #cc0c39;
+            color: #D9D59A;
+            margin: 1rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Tienne', sans-serif;
+            font-weight:bold ;
+        }
+    }
+}

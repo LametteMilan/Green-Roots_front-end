@@ -1,0 +1,153 @@
+.modal-menu {
+    position: absolute;
+    top: 70px;
+    right: 50px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    width: 11rem;
+
+    .modal-content-menu {
+        position: relative;
+        background-color: white;
+        width: 100%;
+        z-index: 1001;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 5px rgb(190, 188, 188);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .button-close-menu {
+            text-decoration: none;
+            background-color: rgba(255, 222, 173, 0);
+            border: none;
+            font-size: larger;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .modal-content-menu-ul {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        &-li {
+            padding: 0.5rem;
+            padding-left: 0.5rem;
+            padding-bottom: 1rem;
+            width: auto;
+
+            &:hover {
+                background-color: #42591e5e;
+            }
+        }
+
+        .button-sign {
+            background-color: #8C471F;
+            border: none;
+            width: 100%;
+            border-bottom-right-radius: 0.5rem;
+            border-bottom-left-radius: 0.5rem;
+            color: #D9D59A;
+            font-size: 0.875rem;
+            font-family: 'Tienne', sans-serif;
+            padding: 0.5rem;
+            text-align: left;
+            padding-left: 0.5rem;
+
+            &:hover {
+                background-color: #42591e5e;
+                color: #42591e;
+                cursor: pointer;
+            }
+        }
+
+        .link-menu {
+            text-decoration: none;
+            color: #42591E;
+            display: block;
+            width: 100%;
+        }
+
+        .auth-modal-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; // Changé de 'center' à 'flex-start'
+            z-index: 2000;
+            overflow: hidden; // Empêche le scroll sur l'arrière-plan
+            padding: 20px 0;
+
+            .auth-modal-content {
+                background-color: #F2F2F2;
+                padding: 2rem;
+                border-radius: 8px;
+                position: relative;
+                max-width: 400px;
+                width: 90%;
+                max-height: 85vh;
+                overflow-y: auto; // Scroll uniquement à l'intérieur
+                margin: 5vh 0;
+
+                .close-button {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                    background: none;
+                    border: none;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    color: #8C471F;
+
+                    &:hover {
+                        color: #42591E;
+                    }
+                }
+
+                .auth-switch {
+                    margin-top: 1rem;
+                    text-align: center;
+                    font-size: 0.9rem;
+                    color: #42591E;
+
+                    .switch-button {
+                        background: none;
+                        border: none;
+                        color: #8C471F;
+                        text-decoration: underline;
+                        cursor: pointer;
+                        font-family: 'Tienne', sans-serif;
+                        padding: 0.2rem 0.5rem;
+
+                        &:hover {
+                            color: #42591E;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-menu {
+        right: 20px;
+        width: 10rem;
+
+        .auth-modal-container .auth-modal-content {
+            padding: 1.5rem;
+        }
+    }
+}

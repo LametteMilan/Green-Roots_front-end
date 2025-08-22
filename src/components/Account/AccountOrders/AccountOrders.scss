@@ -1,0 +1,152 @@
+.orders {
+    display: flex;
+    flex-direction: column;
+
+    hgroup {
+        background-color: #D9D59A;
+        text-align: center;
+        padding: 2rem;
+        margin: 0;
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #42591E;
+        }
+
+        p {
+            color: #42591E;
+            font-size: 0.875rem;
+            padding-top: 1rem;
+
+            strong {
+                font-weight: bold;
+            }
+        }
+    }
+
+    &-content {
+        display: flex;
+        flex-direction: row;
+
+        &-menu {
+            background-color: #B0BF3F;
+            height: 100vh;
+            width: 35%;
+
+            nav {
+                display: flex;
+                flex-direction: column;
+            }
+
+            a {
+                background-color: #42591E;
+                color: #D9D59A;
+                margin: 1rem;
+                padding: 0.5rem 1rem;
+                border-radius: 0.5rem;
+                font-size: 0.625rem;
+                text-decoration: none;
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+
+        &-info {
+            width: 65%;
+            display: flex;
+            flex-direction: column;
+
+            h2 {
+                color: #8C471F;
+                font-weight: bold;
+                font-size: 0.875rem;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            p {
+                text-align: center;
+                color: #42591E;
+                font-size: 0.875rem;
+                padding: 0.5rem;
+                font-weight: bold;
+            }
+
+            .orders-buttonContainer {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 1rem;
+
+                .orders-button {
+                    width: 80%;
+                    background-color: #8C471F;
+                    color: #D9D59A;
+                    border-radius: 0.5rem;
+                    border: none;
+                    font-size: 0.75rem;
+                    font-family: "Tienne", serif;
+                    font-weight: bold;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin: 0;
+                    text-decoration: none;
+
+                    .em-order {
+                        padding: 0.5rem;
+                    }
+
+                    p {
+                        display: flex;
+                        flex-direction: column;
+                        color: #D9D59A;
+
+
+                        span,
+                        em {
+                            font-size: 0.875rem;
+                            // padding-bottom: 0.5rem;
+                            font-size: 0.75rem;
+                        }
+                    }
+                }
+            }
+
+            .account-buttonContainer {
+                display: flex;
+                justify-content: center;
+            }
+
+            .button-more {
+                margin: 2rem;
+                padding: 0.5rem 1rem;
+                background-color: #B0BF3F;
+                color: #f2f2f2;
+                border-radius: 0.5rem;
+                border: none;
+                font-size: 0.875rem;
+                font-family: "Tienne", serif;
+                font-weight: bold;
+                position: static;
+                left: auto;
+                transform: none;
+            }
+        }
+    }
+}
+
+@media (min-width: 800px) {
+    .orders-content-menu {
+        width: 20%;
+    }
+    .orders-buttonContainer {
+        width: 100%;
+
+        .orders-button p{
+            width: auto;
+        }
+    }
+
+}

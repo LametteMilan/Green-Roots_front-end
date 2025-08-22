@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Tienne:wght@400;700;900&family=Ultra&display=swap');
+
+body {
+    font-family: "Tienne", sans-serif;
+    background-color: #F2F2F2;
+}
+.landing {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.landing__banner {
+    background-color:#D9D59A ;
+    color: #42591E;
+    text-align: center;
+    padding: 1rem;
+}
+.landing__banner h2 {
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.landing__banner button {
+    background-color: #42591E;
+    
+    font-weight: bold;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    margin-top: 1rem;
+    font-family: "Tienne", sans-serif;
+}
+
+.landing__banner button a{
+    text-decoration: none;
+    color: #F2F2F2;
+}
+
+.landing__products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    color: #42591E;
+}
+
+.landing__products h2 {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    margin: 0.5rem;
+    font-size: large;
+}
+
+.landing__products article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+.landing__products article img {
+    width: 100px;
+    height: 100px;
+    margin: 0.5rem;
+    border-radius: 0.3rem;
+}
+.landing__products article p {
+    font-size: small;
+}
+
+.landing__products article button {
+    border: none;
+    background-color: #42591E;
+    color: white;
+    font-family: "Tienne", sans-serif;
+    font-weight: bold;
+    font-size: small;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 0.3rem;
+}
+
+.landing__engagement {
+    background-color: #D9D59A;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.landing__engagement h2 {
+    width: 100%;
+    color: #42591E;
+    text-align: center;
+    font-weight: bold;
+    margin: 0.5rem;
+    font-size: large;
+}
+.landing__engagement article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   width: 20%;
+   margin: 0.3rem;
+}
+
+.landing__engagement article img {
+    width: 30px;
+    height: 30px;
+    margin: 0.5rem;
+}
+.landing__engagement article p {
+    width: 100%;
+    font-size: 0.7rem;
+    color: #42591E;
+    text-align: center;
+    
+}
+
+/* Responsive for desktop */
+
+@media screen and (min-width: 800px) {
+    .landing__products article img {
+        width: 200px;
+        height: 200px;
+    }
+}

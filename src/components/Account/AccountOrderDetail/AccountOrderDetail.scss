@@ -1,0 +1,169 @@
+.account {
+    display: flex;
+    flex-direction: column;
+
+    hgroup {
+        background-color: #D9D59A;
+        text-align: center;
+        padding: 2rem;
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #42591E;
+        }
+
+        p {
+            color: #42591E;
+            font-size: 0.875rem;
+            padding-top: 1rem;
+
+            strong {
+                font-weight: bold;
+            }
+        }
+    }
+
+    &-content {
+        display: flex;
+        flex-direction: row;
+
+        &-menu {
+            background-color: #B0BF3F;
+            height: 100vh;
+            width: 35%;
+
+            nav {
+                display: flex;
+                flex-direction: column;
+            }
+
+            a {
+                background-color: #42591E;
+                color: #D9D59A;
+                margin: 1rem;
+                padding: 0.5rem 1rem;
+                border-radius: 0.5rem;
+                font-size: 0.625rem;
+                text-decoration: none;
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+
+        &-Dinfo {
+            width: 65%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            section {
+                padding: 1rem;
+            }
+
+            h2 {
+                color: #8C471F;
+                font-weight: bold;
+                font-size: 0.875rem;
+                text-align: center;
+                padding-bottom: 1rem;
+            }
+
+            p {
+                text-align: center;
+                color: #42591E;
+                font-size: 0.625rem;
+                font-weight: bold;
+            }
+
+            .grid-order {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(2, auto);
+                grid-column-gap: 0px;
+                grid-row-gap: 0px;
+            }
+
+            &-detail {
+                grid-area: 2 / 1 / 3 / 5;
+                background-color: #8C471F;
+                border-radius: 0.5rem;
+                font-size: 0.625rem;
+                color: #D9D59A;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+
+                em {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .img-container {
+                    width: 3rem;
+                    height: 3rem;
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: 50%;
+                    margin: 0.5rem;
+
+                    img {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+
+            .account-buttonContainer {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                .detail-order {
+                    color:#42591E;
+                    font-size: 0.825rem;
+                    background-color: #B0BF3F;
+                    border-radius: 0.5rem;
+                    padding: 0.5rem;
+                    margin: 2rem;
+                    margin-bottom: 0;
+                }
+
+                button {
+                    margin: 2rem;
+                    padding: 0.5rem;
+                    background-color: #8C471F;
+                    color: #D9D59A;
+                    border-radius: 0.5rem;
+                    border: none;
+                    font-size: 0.875rem;
+                    font-family: "Tienne", serif;
+                    font-weight: bold;
+                    position: static;
+                    left: auto;
+                    transform: none;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 800px) {
+    .account-content-menu{
+        width: 20%;
+    }
+
+    .account-content-Dinfo{
+        width: 80%;
+
+        .grid-order {
+            grid-template-columns: repeat(4, 15vw);
+        }
+    }
+
+}
+  

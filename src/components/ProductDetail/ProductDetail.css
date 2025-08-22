@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Tienne:wght@400;700;900&family=Ultra&display=swap');
+body {
+    font-family: 'Tienne', sans-serif;
+    background-color: #f2f2f2;
+}
+
+.container-productDetail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+}
+
+.banner__product {
+    background-color: #D9D59A;
+    padding: 1rem;
+    color: #42591E;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.banner__product hgroup h2 {
+    font-size: large;
+    font-weight: bold;
+}
+
+.banner__product hgroup p {
+    font-size: small;
+}
+.price {
+    font-size: large;
+    font-weight: bold;
+}
+
+.container__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-detailProd {
+    margin: 1rem;
+    width: 300px;
+    height: 300px;
+    border-radius: 0.3rem;
+}
+
+.banner__description {
+    background-color:#B0BF3F;
+    color: #f2f2f2;
+    padding: 1rem;
+    font-size: small;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner__description button {
+    border: none;
+    background-color:#8C471F;
+    color: #f2f2f2;
+    font-family: 'Tienne', sans-serif;
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.button_addBookmarks:hover{
+    cursor: grab;
+    background-color: #8c471f6c;
+}
+
+.button-retry{
+    border: none;
+    background-color: #cc0c39;
+    color: #D9D59A;
+    margin: 1rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    font-family: 'Tienne', sans-serif;
+    font-weight:bold ;
+}
+
+/* positionner les boutons exactement comme sur la maquette (optionnel) */
+
+.reviews {
+    text-align: start;
+    padding: 0.5rem;
+}
+.reviews h3 {
+    font-size: large;
+    font-weight: bold;
+    color :#42591E;
+    margin: 1rem;
+}
+
+.reviews article {
+    display: flex;
+    background-color: #B0BF3F;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 0.3rem;
+    font-size: small;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem
+
+}
+
+.author {
+    font-weight: bold;
+    color: #42591E;
+}
+
+.duration {
+    font-style: italic;
+    color: #F2F2F2;
+    font-size: smaller;
+}
+
+.comment {
+    color: #F2F2F2;
+    font-size: small;
+}
+
+/* Responsive for desktop */
+
+@media screen  and (min-width: 800px) {
+
+    .banner__product {
+        justify-content: space-around;
+    }
+
+    .img-detailProd {
+        width: 400px;
+        height: 400px;
+    }
+
+    .reviews article {
+        justify-content: flex-start;
+        gap: 2rem;
+    }
+}

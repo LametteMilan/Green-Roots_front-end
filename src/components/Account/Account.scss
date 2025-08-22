@@ -1,0 +1,137 @@
+.account {
+    display: flex;
+    flex-direction: column;
+
+    hgroup {
+        background-color: #D9D59A;
+        text-align: center;
+        padding: 2rem;
+        margin: 0;
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #42591E;
+        }
+
+        p {
+            color: #42591E;
+            font-size: 0.875rem;
+            padding-top: 1rem;
+
+            strong {
+                font-weight: bold;
+            }
+        }
+    }
+
+    &-content {
+        display: flex;
+        flex-direction: row;
+
+        &-menu {
+            background-color: #B0BF3F;
+            height: 100vh;
+            width: 35%;
+
+            nav {
+                display: flex;
+                flex-direction: column;
+            }
+
+            a {
+                background-color: #42591E;
+                color: #D9D59A;
+                margin: 1rem;
+                padding: 0.5rem 1rem;
+                border-radius: 0.5rem;
+                font-size: 0.625rem;
+                text-decoration: none;
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+
+        &-info {
+            width: 65%;
+
+            .account-section {
+                padding: 1rem;
+
+                p {
+                    text-align: left;
+                    font-weight: 100;
+                }
+            }
+
+            &-bar {
+                border-top: 1px solid #8C471F;
+                padding: 1rem;
+
+                .info-p {
+                    text-align: left;
+                    font-weight: 100;
+                }
+            }
+
+            h2 {
+                color: #8C471F;
+                font-weight: bold;
+                font-size: 0.875rem;
+                text-align: center;
+                padding-bottom: 1rem;
+            }
+
+            p {
+                color: #42591E;
+                font-size: 0.625rem;
+                padding: 0.5rem;
+
+
+                strong {
+                    font-weight: bold;
+                    padding-right: 1.5rem;
+                }
+            }
+
+            .account-buttonContainer {
+                display: flex;
+                justify-content: center;
+
+                .account-button1 {
+                    margin: 2rem;
+                    padding: 0.5rem;
+                    background-color: #8C471F;
+                    color: #D9D59A;
+                    border-radius: 0.5rem;
+                    border: none;
+                    font-size: 0.625rem;
+                    font-family: "Tienne", serif;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 800px) {
+    .account-content-info {
+        width: 80%;
+    }
+
+    .account-content-info p{
+        font-size: 1rem;
+    }
+
+    .info-p {
+        width: 100%;
+
+        strong{
+            font-size: 1rem;
+        }
+    }
+
+    .account-button1{
+    font-size: 1rem;
+    }
+}

@@ -1,0 +1,61 @@
+.engagement {
+    color: #42591E;
+    padding: 2rem;
+
+    &-h1 {
+        font-weight: bold;
+        font-size: 2rem;
+        text-align: center;
+        padding-bottom: 1rem;
+    }
+
+    &-h2 {
+        font-weight: bold;
+        font-size: 0.875rem;
+        padding-bottom: 1rem;
+        padding-top: 2rem;
+        text-align: left;
+    }
+
+    &-p {
+        line-height: 1rem;
+        font-size: 0.625rem;
+    }
+
+    .engagement-ul {
+        list-style-image: url('../../assets/leaf_list.png');
+        list-style-position: inside;
+        font-size: 0.625rem;
+    }
+
+    li {
+        padding: 0.3rem;
+    }
+
+    &-buttonContainer {
+        display: flex;
+        justify-content: center;
+
+        .engagement-button {
+            margin: 2rem;
+            padding: 0.5rem;
+            background-color: #8C471F;
+            border-radius: 0.5rem;
+            border: none;
+            font-size: 1rem;
+            font-family: "Tienne", serif;
+            font-weight: bold;
+            position: static;
+            left: auto;
+            transform: none;
+
+
+            a{
+                text-decoration: none;
+                color: #D9D59A;
+            }
+        }
+    }
+}
+
+

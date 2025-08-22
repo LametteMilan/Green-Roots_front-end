@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Tienne:wght@400;700;900&family=Ultra&display=swap');
+
+body {
+    font-family: "Tienne", sans-serif;
+    background-color:#F2F2F2 ;
+    color: #42591E;
+}
+.container-notices {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    text-align: center;
+    font-weight: bold;
+    font-size: larger;
+    padding: 1rem;
+}
+
+.banner-notices {
+    margin: 1rem;
+}
+
+.banner-notices h3 {
+    font-size: large;
+    font-weight: bold;
+}
+
+.button-container{
+    display: flex;
+    justify-content: center;
+}
+
+.back-home {
+    border: none;
+    background-color: #8C471F;
+    text-align: center;
+    font-family: 'tienne', sans-serif;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    font-weight: bold;
+    border-radius: 0.3rem;
+    width: 25%;
+    /* position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+}
+
+.back-home a{
+    text-decoration: none;
+    color: #F2F2F2;
+}
