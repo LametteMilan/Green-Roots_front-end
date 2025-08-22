@@ -4,10 +4,13 @@ import Header from '../HeaderAll/Header/Header';
 import './Landing.css';
 import type IProducts from '../../@types/products';
 import { useAuth } from '../../contexts/AuthContext';
-import axios from 'axios';
+// --- Je remplace l'import axios classique par l'instance axiosClient configurée ---
+import axiosClient from '../../axiosClient';  // <-- instance axios avec withCredentials: true
 import { useEffect, useState } from 'react';
 import type ICart from '../../@types/cart';
 import ModalAddToCart from '../ModalAddToCart/ModalAddToCart';
+// --- Import du hook qui récupère le token CSRF ---
+import { useCsrfToken } from '../../hooks/useCsrfToken';
 
 interface ProductsProps {
   allProducts: IProducts[];
@@ -18,7 +21,10 @@ interface ProductsProps {
 function Landing({ allProducts, cart, setCart }: ProductsProps) {
   const base_url = import.meta.env.VITE_BASE_URL;
   const quantityDefault = 1;
-  const token = localStorage.getItem('token');
+
+  // --- Suppression du token JWT stocké localement car on utilise le cookie httpOnly---
+  // const token = localStorage.getItem('token'); // 
+
   const [addToCartModal, setAddToCartModal] = useState(false);
   const [successMessage, setSuccessMessage] = useState<boolean>(false);
   const [errorMessageCart, setErrorMessageCart] = useState('');
@@ -30,15 +36,14 @@ function Landing({ allProducts, cart, setCart }: ProductsProps) {
   const { isAuthenticated } = useAuth();
   console.log('Utilisateur authentifié :', isAuthenticated);
 
+  // --- Récupération du token CSRF via le hook fourni ---
+  const csrfToken = useCsrfToken();
+
   const fetchCart = async () => {
     try {
       console.log("Appel à l'API pour récupérer le panier...");
-      const response = await axios.get(`${base_url}/carts`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      });
+      // Utilisation d'axiosClient qui envoie automatiquement les cookies (JWT)
+      const response = await axiosClient.get(`${base_url}/carts`);
       console.log("Réponse de l'API panier :", response.data);
       setCart(response.data);
       console.log('Panier mis dans le state :', response.data);
@@ -54,10 +59,6 @@ function Landing({ allProducts, cart, setCart }: ProductsProps) {
     }
   }, [isAuthenticated]);
 
-  // useEffect(() => {
-  //   console.log('Cart updated:', cart);
-  // }, [cart]);
-
   const addToCart = async (productId: number) => {
     if (!cart) {
       console.warn("Panier non chargé, impossible d'ajouter au panier.");
@@ -65,7 +66,12 @@ function Landing({ allProducts, cart, setCart }: ProductsProps) {
     }
 
     try {
-      const response = await axios.post(
+      // J'impose le token CSRF dans le header comme le backend le demande
+      if (!csrfToken) {
+        throw new Error('Token CSRF manquant, impossible d’ajouter au panier');
+      }
+
+      const response = await axiosClient.post(
         `${base_url}/product-carts`,
         {
           id_cart: cart.id_cart,
@@ -74,10 +80,11 @@ function Landing({ allProducts, cart, setCart }: ProductsProps) {
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            'x-csrf-token': csrfToken,  // <-- J'ajoute le token CSRF dans l'en-tête
           },
-        },
+        }
       );
+
       console.log('Produit ajouté au panier', response.data);
       setErrorMessageCart(`${response.data}`);
       setSuccessMessage(true);
@@ -158,7 +165,7 @@ function Landing({ allProducts, cart, setCart }: ProductsProps) {
         </article>
       </section>
       <Footer />
-      {/* Affichage de la modale d'ajout au panier si uesr connecté */}
+      {/* Affichage de la modale d'ajout au panier si user connecté */}
       {addToCartModal && (
         <ModalAddToCart
           successMessage={successMessage}
@@ -167,6 +174,7 @@ function Landing({ allProducts, cart, setCart }: ProductsProps) {
           setAddToCartModal={setAddToCartModal}
         />
       )}
+
       {addCartCo && !isAuthenticated && (
         <div className="modal-message">
           <div className="modal-message-content">

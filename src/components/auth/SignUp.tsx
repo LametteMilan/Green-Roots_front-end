@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+// Suppression de l'import axios 
+// import axios from 'axios'; 
+import axiosClient from '../../axiosClient';
 import { useAuth } from '../../contexts/AuthContext';
+import { useCsrfToken } from '../../hooks/useCsrfToken'; 
 import './SignUp.scss';
 
 interface SignUpProps {
@@ -17,18 +20,21 @@ export const SignUp = ({ onSuccess }: SignUpProps) => {
     street: '',
     zip_code: '',
     country: '',
-    city: ''
+    city: '',
   });
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
 
+  // Récupération du token CSRF (ne modifie pas ta logique)
+  const csrfToken = useCsrfToken();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -36,39 +42,34 @@ export const SignUp = ({ onSuccess }: SignUpProps) => {
     e.preventDefault();
     setIsLoading(true);
     setError(null);
-  
+
     try {
-      // Validation côté client
+      if (!csrfToken) throw new Error('Token CSRF non disponible');
+
       if (!formData.email || !formData.password || !formData.first_name || !formData.last_name) {
         throw new Error('Tous les champs obligatoires doivent être remplis');
       }
-  
+
       if (formData.password.length < 8) {
         throw new Error('Le mot de passe doit contenir au moins 8 caractères');
       }
-  
-      // Préparation des données pour l'API
-      const userData = {
-        ...formData,
-        zip_code: Number(formData.zip_code),
-        user_role: 'customer',
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString()
-      };
-  
-      // Envoi de la requête d'inscription
-      await axios.post('/users', userData);
-  
-      // Connexion automatique après inscription
+
+      // appel POST via axiosClient et ajout header csrf
+      await axiosClient.post('/users', formData, {
+        headers: {
+          'x-csrf-token': csrfToken,
+        },
+      });
+
       await login(formData.email, formData.password);
-      navigate('/');
       onSuccess?.();
-  
-    } catch (err) {
+
+      navigate('/');
+    } catch (err: any) {
       console.error('Signup failed:', err);
-      if (axios.isAxiosError(err)) {
-        setError(err.response?.data?.error || 'Une erreur est survenue lors de l\'inscription');
-      } else if (err instanceof Error) {
+      if (err.response?.data?.error) {
+        setError(err.response.data.error);
+      } else if (err.message) {
         setError(err.message);
       } else {
         setError('Une erreur inconnue est survenue');
@@ -82,13 +83,11 @@ export const SignUp = ({ onSuccess }: SignUpProps) => {
     <div className="signup-container">
       <form onSubmit={handleSubmit} className="signup-form">
         <h2>Créer un compte</h2>
-        
         {error && (
           <div className="error-message">
             <span role="alert">{error}</span>
           </div>
         )}
-
         <div className="form-section">
           <h3>Informations personnelles</h3>
           <div className="form-group">
